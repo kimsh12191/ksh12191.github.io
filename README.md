@@ -30,10 +30,6 @@ when occurs bundler error:
 gem install bundler
 
 
-##
-
-gem "github-pages", group :jekyll_plugins
-
 ## 지켜야 할것
 
 _posts안에 post할 markdown파일을 넣는다
@@ -46,4 +42,14 @@ title: Blogging Like a Hacker
 파일명 규칙
 
 YYYY-MM-DD-[POST SLUG].[FORMAT]
+
+## Markdown변환
+
+주로 ipynb 파일을 문서작업할때 사용하는데 얘를 한방에 마크다운으로 바꾸자
+(근데 파이썬 가상환경을 꼭 열어줘야하는 귀찮음)
+
+ipython nbconvert *.ipynb --to markdown
+
+이걸로 markdown으로 바꿈
+
 
