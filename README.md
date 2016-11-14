@@ -3,9 +3,9 @@ using Jekyll
 
 ## help site 
 
-https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
-http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html
-http://michaelchelen.net/81fa/install-jekyll-2-ubuntu-14-04/
+- https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
+- http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html
+- http://michaelchelen.net/81fa/install-jekyll-2-ubuntu-14-04/
 
 ## github jekyll
 
