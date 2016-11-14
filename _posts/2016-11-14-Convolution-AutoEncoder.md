@@ -208,35 +208,35 @@ print("Training done. ")
 
 
 
-![png](02CAE_EX_files/02CAE_EX_12_1.png)
+![png](/images/02CAE_EX_files/02CAE_EX_12_1.png)
 
 
     [01/05] cost: 7053.6655
 
 
 
-![png](02CAE_EX_files/02CAE_EX_12_3.png)
+![png](/images/02CAE_EX_files/02CAE_EX_12_3.png)
 
 
     [02/05] cost: 3563.6311
 
 
 
-![png](02CAE_EX_files/02CAE_EX_12_5.png)
+![png](/images/02CAE_EX_files/02CAE_EX_12_5.png)
 
 
     [03/05] cost: 2776.3281
 
 
 
-![png](02CAE_EX_files/02CAE_EX_12_7.png)
+![png](/images/02CAE_EX_files/02CAE_EX_12_7.png)
 
 
     [04/05] cost: 2381.3625
 
 
 
-![png](02CAE_EX_files/02CAE_EX_12_9.png)
+![png](/images/02CAE_EX_files/02CAE_EX_12_9.png)
 
 
     Training done. 
@@ -282,7 +282,7 @@ plt.show()
 ```
 
 
-![png](02CAE_EX_files/02CAE_EX_17_0.png)
+![png](/images/02CAE_EX_files/02CAE_EX_17_0.png)
 
 
 ## 2.2. Define Network
@@ -482,7 +482,7 @@ plt.show()
 ```
 
 
-![png](02CAE_EX_files/02CAE_EX_27_0.png)
+![png](/images/02CAE_EX_files/02CAE_EX_27_0.png)
 
 
 
@@ -505,7 +505,7 @@ plt.tight_layout()
 ```
 
 
-![png](02CAE_EX_files/02CAE_EX_28_0.png)
+![png](/images/02CAE_EX_files/02CAE_EX_28_0.png)
 
 
 ** 복잡하고, 성능이 좋은 동시에 현상을 설명할 수 있는 근거가 될 수 있었으면....**
