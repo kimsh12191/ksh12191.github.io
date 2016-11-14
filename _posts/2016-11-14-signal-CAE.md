@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Convolution Auto Encoder for signal, Toy example
+title: Convolution Auto Encoder for signal - Toy example
 ---
 
 CAE를 이용해서 wavelet변환에 이용되는 wavelet을 찾아내보자
