@@ -32,3 +32,8 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+collections:
+  _images:
+    output: true
+    permalink: /_images/:path
