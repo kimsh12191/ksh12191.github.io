@@ -1,11 +1,12 @@
 ---
 layout: post
-title: Convolution Auto Encoder for signal - Toy example
+title: test2
 ---
 
 CAE를 이용해서 wavelet변환에 이용되는 wavelet을 찾아내보자
 
-```{.python .input}
+
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 import math
@@ -17,11 +18,10 @@ from sklearn.utils import shuffle
 
 ```
 
-# 1. 이미지 예제
+# 1. 이미지 예제 
 
 
-출처 :
-https://github.com/sjchoi86/tensorflow-101/blob/master/notebooks/cae_mnist.ipynb
+출처 : https://github.com/sjchoi86/tensorflow-101/blob/master/notebooks/cae_mnist.ipynb
 
 이미지예제는 깃에있는 코드를 그대로 넣음
 MNIST 이미지 이용해서 CAE model 생성
@@ -30,7 +30,8 @@ MNIST 이미지 이용해서 CAE model 생성
 
 ## 1.1. 이미지 불러오기
 
-```{.python .input}
+
+```python
 mnist = input_data.read_data_sets("data/", one_hot=True)
 trainimgs   = mnist.train.images
 trainlabels = mnist.train.labels
@@ -45,10 +46,11 @@ print ("Packages loaded")
 
 ## 1.2. Define Network
 
-- convolution layer와 bias에 들어갈 변수를 초기화 한다.
+- convolution layer와 bias에 들어갈 변수를 초기화 한다. 
 - random_normal로 초기화
 
-```{.python .input}
+
+```python
 n1 = 16
 n2 = 32
 n3 = 64
@@ -71,7 +73,8 @@ biases = {
 }
 ```
 
-```{.python .input}
+
+```python
 def cae(_X, _W, _b, _keepprob):
     _input_r = tf.reshape(_X, shape=[-1, 28, 28, 1])
     # Encoder
@@ -110,7 +113,8 @@ print ("Network ready")
 
 - 학습을 위한 cost function 정의
 
-```{.python .input}
+
+```python
 x = tf.placeholder(tf.float32, [None, dim])
 y = tf.placeholder(tf.float32, [None, dim])
 keepprob = tf.placeholder(tf.float32)
@@ -130,9 +134,10 @@ print ("Functions ready")
     - batch normalize
     - auto-encoder할때 input에 noise넣어서 noise에 좀 자유러워 지기
 
-- iteration안에서 학습이 잘되고있나 알고싶어 중간중간 input > CAE > output 비교할 수 있는 코드작성
+- iteration안에서 학습이 잘되고있나 알고싶어 중간중간 input > CAE > output 비교할 수 있는 코드작성 
 
-```{.python .input}
+
+```python
 sess = tf.Session()
 sess.run(init)
 # mean_img = np.mean(mnist.train.images, axis=0)
@@ -175,8 +180,7 @@ print("Training done. ")
 우리는 신호로 할꺼니까 신호예제를만들자.
 (부끄럽지만 위의 git예제를 그대로 복붙해서만들었다.)
 
-이미지도 신호이긴 하지만 우리는 input 을 ($1\times N$)크기의 신호로, convolution을 ($n \times 1$)의
-wavelet 처럼 만들고 싶다.
+이미지도 신호이긴 하지만 우리는 input 을 ($1\times N$)크기의 신호로, convolution을 ($n \times 1$)의 wavelet 처럼 만들고 싶다. 
 - CAE로 wavelet찾기?
 
 
@@ -185,7 +189,8 @@ wavelet 처럼 만들고 싶다.
 
 코사인 함수 + normal 노이즈
 
-```{.python .input}
+
+```python
 X = np.linspace(0.05,2,100)
 signal_train = np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(1000,100)) 
 signal_test =  np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(200,100)) 
@@ -193,7 +198,8 @@ signal_test =  np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(20
 
 어떻게 생겨먹은 샘플인가?
 
-```{.python .input}
+
+```python
 plt.plot(X,signal_train[2,:],'-',mew=1.5)
 plt.show()
 ```
@@ -213,10 +219,11 @@ ex) 컨벌루션의 크기라던지, 몇개나만들어낼지 등등
 
 $$\frac{N-F}{S} + 1$$
 
-이 식에따라서 줄어듦.
+이 식에따라서 줄어듦. 
 
 
-```{.python .input}
+
+```python
 n1 = 1
 n2 = 1
 
@@ -242,7 +249,8 @@ biases = {
 - 우리는 _W, _b 즉, 파라미터가 필요하다. (이 친구들이 우리가 알고자 하는 새로운 feature를 만들어줄 친구들)
 - 그래서 위의 예제와 다르게 return값을 추가적으로 더 받는다.
 
-```{.python .input}
+
+```python
 def cae(_X, _W, _b, _keepprob):
     with tf.name_scope('input'):
         _input_r = tf.reshape(_X, shape=[-1, 1, 100, 1])
@@ -289,7 +297,8 @@ print ("Network ready")
     - `CAE_model, weight_tensor, bias_tensor`
     - 모델의 결과, 파라미터를 모두 받을 것이다.
 
-```{.python .input}
+
+```python
 learning_rate = 0.001
 dim = 100
 x = tf.placeholder(tf.float32, [None, dim], name = 'input_x')
@@ -314,11 +323,12 @@ with tf.name_scope('accuracy'):
 print ("Functions ready")
 ```
 
-## 2.4. Training
+## 2.4. Training 
 - batch normalize나 noise추가 따위 다 뺌
 - parameter를 tensor에서 꺼내온다
 
-```{.python .input}
+
+```python
 
 init = tf.initialize_all_variables()
 # Create a summary to monitor cost tensor
@@ -374,11 +384,13 @@ with tf.Session() as sess:
     print("Training done... ")
 ```
 
-```{.python .input}
+
+```python
 plt.plot(weights['ce2'].reshape(25))
 ```
 
-```{.python .input}
+
+```python
 fig = plt.figure(figsize = (10, 6))
 ax1 = fig.add_subplot(5, 1, 1, title = "input data+noise", ylim = (-1.5, 1.5))
 ax1.plot(X, signal_test[0, :])
@@ -397,14 +409,17 @@ ax5.plot(X, reconv2[0, :, :, 0].reshape(100))
 plt.tight_layout()
 ```
 
-```{.python .input}
+
+```python
 
 ```
 
-```{.python .input}
+
+```python
 
 ```
 
-```{.python .input}
+
+```python
 
 ```
