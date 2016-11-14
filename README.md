@@ -36,7 +36,7 @@ _posts안에 post할 markdown파일을 넣는다
 ```
 ---
 layout: post
-title: Blogging Like a Hacker
+title: 제목
 ---
 ```
 파일명 규칙
