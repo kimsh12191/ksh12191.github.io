@@ -33,17 +33,3 @@ gem install bundler
 ##
 
 gem "github-pages", group :jekyll_plugins
-
-## 지켜야 할것
-
-_posts안에 post할 markdown파일을 넣는다
-```
----
-layout: post
-title: Blogging Like a Hacker
----
-```
-파일명 규칙
-
-YYYY-MM-DD-[POST SLUG].[FORMAT]
-
