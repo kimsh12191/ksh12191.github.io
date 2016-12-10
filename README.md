@@ -52,4 +52,6 @@ ipython nbconvert *.ipynb --to markdown
 
 이걸로 markdown으로 바꿈
 
+## Run local 
+
 
