@@ -58,3 +58,6 @@ ipython nbconvert *.ipynb --to markdown
 - gem2.0 install bundler
 - bundle install
 - bundle exec jekyll serve 를 이용해서 로컬에서 실행
+
+## Symlink error
+

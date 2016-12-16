@@ -1,7 +1,7 @@
-make github blog 
+make github blog
 using Jekyll
 
-## help site 
+## help site
 
 - https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
 - http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html
@@ -17,7 +17,7 @@ if occur ruby version error :
 
 sudo apt-get install ruby2.0 ruby2.0-dev
 
-sudo gem2.0 install jekyll-import 
+sudo gem2.0 install jekyll-import
 
 sudo gem install jekyll --no-rdoc --no-ri
 
@@ -52,4 +52,9 @@ ipython nbconvert *.ipynb --to markdown
 
 이걸로 markdown으로 바꿈
 
-
+## Run local
+원래라면 jekyll serve --watch
+근데 에러가 나네..?
+- gem2.0 install bundler
+- bundle install
+- bundle exec jekyll serve 를 이용해서 로컬에서 실행
