@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: 저는
+title: Site Title
 locale: en_US
-description: 이런걸 공부합니다.
+description: Describe your website here.
 logo: site-logo.png
 search: true
 url: http://localhost:4000
