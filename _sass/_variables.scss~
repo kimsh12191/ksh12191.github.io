@@ -10,7 +10,6 @@ $code-font:
         "Courier New",
         Courier,
         monospace;
-$code-font-stack: $code-font;
 $alt-font                 : 'volkhov', serif;
 
 $doc-font-size            : 16;
