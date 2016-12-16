@@ -1,41 +1,60 @@
-# brume
+make github blog
+using Jekyll
 
-I am not a designer so I cannot impress you with breathtaking Jekyll themes, but brume is something that just came to my mind and I had to build it. It is a clean and simple theme, which has an index page that lists all your blog posts divided by year and an about page.
+## help site
 
-This is how the "Home" page looks like.
+- https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
+- http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html
+- http://michaelchelen.net/81fa/install-jekyll-2-ubuntu-14-04/
 
-![Home](https://dl.dropboxusercontent.com/u/9924988/Screen%20Shot%202014-02-26%20at%2018.48.57.png)
+## github jekyll
 
-And this is a single post.
+sudo apt-get install ruby ruby-dev make gcc nodejs
 
-![Home](https://dl.dropboxusercontent.com/u/9924988/Screen%20Shot%202014-04-06%20at%2012.56.08.png)
+sudo gem install jekyll --no-rdoc --no-ri
 
-## Usage
+if occur ruby version error :
 
-**Important:** The latest version of brume uses `site.baseurl` for links, therefore, if you want to put your site in a subdirectory, update the *_config.yml* file!
+sudo apt-get install ruby2.0 ruby2.0-dev
 
-- Download the ZIP file and extract it's contents.
-- Open *_config.yml* file and enter your site's URL and add additional configuration or update the existing one if needed.
-- Open *about/index.md* file and add information about you or your site. You can delete this file and directory if not needed.
-- Open *_data/links.yml* and add additional links or update the existing ones that you want to be displayed in the navigation menu.
-- If you don't want to use CC BY-NC 4.0 licence for the content, then you should change the footer text, which is located in *_layouts/default.html*.
-- Generate your site and be happy!
+sudo gem2.0 install jekyll-import
 
-### Jekyll < 2.0.0
+sudo gem install jekyll --no-rdoc --no-ri
 
-I try to keep brume up to date with the newest Jekyll version. Jekyll 2.0.0 introduced a lot of changes (like a built in Sass support) that are not backward compatible, therefore I have created a separate branch `legacy` for those, who might be using an older Jekyll version. All the changes that I introduce in `master` will be ported to `legacy`.
+## Create new site
 
-## Theme customization
+jekyll new mysite
+cd mysite
 
-This theme has 4 predefined colors that can be used for links:
+when occurs bundler error:
+gem install bundler
 
-- azul
-- ruby
-- amber
-- avocado
 
-![Color Examples](https://dl.dropboxusercontent.com/u/9924988/colors_new.png)
+## 지켜야 할것
 
-By default it uses *azure*, but if you want to select another one just change the second class of `container` div in *_layouts/default.html* to one of the provided names.
+_posts안에 post할 markdown파일을 넣는다
+```
+---
+layout: post
+title: 제목
+---
+```
+파일명 규칙
 
-Express your thoughts about brume on Twitter [@aigarsdz](http://twitter.com/aigarsdz), and help me make it better!
+YYYY-MM-DD-[POST SLUG].[FORMAT]
+
+## Markdown변환
+
+주로 ipynb 파일을 문서작업할때 사용하는데 얘를 한방에 마크다운으로 바꾸자
+(근데 파이썬 가상환경을 꼭 열어줘야하는 귀찮음)
+
+ipython nbconvert *.ipynb --to markdown
+
+이걸로 markdown으로 바꿈
+
+## Run local
+원래라면 jekyll serve --watch
+근데 에러가 나네..?
+- gem2.0 install bundler
+- bundle install
+- bundle exec jekyll serve 를 이용해서 로컬에서 실행
