@@ -1,28 +1,60 @@
-# So Simple Theme
+make github blog
+using Jekyll
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the followup to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes/) -- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+## help site
 
-## Notable features:
+- https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
+- http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html
+- http://michaelchelen.net/81fa/install-jekyll-2-ubuntu-14-04/
 
-* Compatible with Jekyll 3 and GitHub Pages.
-* Responsive templates. Looks good on mobile, tablet, and desktop devices.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page](http://mmistakes.github.io/so-simple-theme/404.html) to get you started.
-* Basic [search capabilities](https://github.com/mathaywarduk/jekyll-search)
-* Support for Disqus Comments
+## github jekyll
 
-![screenshot of So Simple Theme](http://mmistakes.github.io/so-simple-theme/images/so-simple-theme-preview.jpg)
+sudo apt-get install ruby ruby-dev make gcc nodejs
 
-See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) hosted on GitHub.
+sudo gem install jekyll --no-rdoc --no-ri
 
+if occur ruby version error :
+
+sudo apt-get install ruby2.0 ruby2.0-dev
+
+sudo gem2.0 install jekyll-import
+
+sudo gem install jekyll --no-rdoc --no-ri
+
+## Create new site
+
+jekyll new mysite
+cd mysite
+
+when occurs bundler error:
+gem install bundler
+
+
+## 지켜야 할것
+
+_posts안에 post할 markdown파일을 넣는다
+```
 ---
+layout: post
+title: 제목
+---
+```
+파일명 규칙
 
-## Getting Started
+YYYY-MM-DD-[POST SLUG].[FORMAT]
 
-So Simple takes advantage of Sass and data files to make customizing easier and requires Jekyll 3.x.
+## Markdown변환
 
-To learn how to install and use this theme check out the [Setup Guide](http://mmistakes.github.io/so-simple-theme/theme-setup/) for more information.
+주로 ipynb 파일을 문서작업할때 사용하는데 얘를 한방에 마크다운으로 바꾸자
+(근데 파이썬 가상환경을 꼭 열어줘야하는 귀찮음)
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mmistakes/so-simple-theme/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+ipython nbconvert *.ipynb --to markdown
+
+이걸로 markdown으로 바꿈
+
+## Run local
+원래라면 jekyll serve --watch
+근데 에러가 나네..?
+- gem2.0 install bundler
+- bundle install
+- bundle exec jekyll serve 를 이용해서 로컬에서 실행
