@@ -1,12 +1,7 @@
 ---
 layout: post
-title: "Hello World"
-modified:
-categories: blog
-excerpt:
-tags: []
-image:
-  feature:
+title: Convolution Autoencoder toy example
+comments: true
 ---
 
 CAE를 이용해서 wavelet변환의 mother wavelet 역할을 하는 친구를 찾아보자
