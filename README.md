@@ -59,5 +59,9 @@ ipython nbconvert *.ipynb --to markdown
 - bundle install
 - bundle exec jekyll serve 를 이용해서 로컬에서 실행
 
+ jekyll serve --baseurl '' --watch (css적용을위해)
+
+
+
 ## Symlink error
 
