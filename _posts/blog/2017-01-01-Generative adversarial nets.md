@@ -1,3 +1,14 @@
+---
+layout: post
+title: Generative Adversarial Nets (GANs)
+modified:
+categories: blog
+excerpt:
+tags: []
+image:
+  feature:
+---
+
 # Generative Adversarial Nets (GANs)
 
 - generative model
