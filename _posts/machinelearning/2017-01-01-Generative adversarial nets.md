@@ -4,7 +4,7 @@ title: Generative Adversarial Nets (GANs)
 modified:
 categories: machinelearning
 excerpt:
-tags: [GAN]
+tags: [DL]
 image:
   feature:
 ---
