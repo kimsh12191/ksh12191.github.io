@@ -4,7 +4,7 @@ title: [180226]Signal processing lecture
 modified:
 categories: signal
 excerpt:
-tags: [signal_processing]
+tags: [signalprocessing]
 image:
   feature:
 ---
