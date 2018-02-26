@@ -2,7 +2,7 @@
 layout: page
 title: SIGNAL
 excerpt: "An archive of blog posts sorted by date."
-search_omit: true
+search_omit: False
 ---
 
 

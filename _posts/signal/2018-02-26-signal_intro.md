@@ -10,6 +10,7 @@ image:
 ---
 
 # Signal processing lecture 1
+
 - 초반엔 별거 없음. 개념이름 정도 정리하자
 
 1. Signal : 신호처리니까 신호가 나오지. 쉽게생각하면 정보?정도
