@@ -29,6 +29,7 @@ jupyter notebok --generate-config
 
 ## 외부접속 허용
 - `jupyter_notebook_config.py`에서 아래에 해당하는 부분만 수정하면 될듯
+
 ```
 c.NotebookApp.allow_origin = '*'
 ```
@@ -39,6 +40,7 @@ c.NotebookApp.notebook_dir = '경로입력하기'
 ## 접속 암호 설정
 - 암호설정
 - 파이썬을 실행한다.
+
 ```python
 from notebook.auth import passwd
 passwd()
@@ -46,6 +48,7 @@ passwd()
 
 - 비밀번호생성하면 아래처럼됨
   - 아마도 아무것도 안쳐지겟지만 써지고있는거임
+
 ```python
 >>> from notebook.auth import passwd
 >>> passwd()
@@ -56,18 +59,22 @@ Verify password:
 ```
 
 - 다시 `config` 돌아가서 password에 'sha1:e412d609ce63:59a4c8d32808a4e7284ebadcbba239479c8cd89e' 를 넣어줌
+
 ```
 c.NotebookApp.password =
 ```
+
 ## 접속 포트 설정
-- 내가뭘 잘못했나? 딱히 여기적은포트로 안되는데...
-- 기본은 8888임 하나더키면 8889됨
+  - 내가뭘 잘못했나? 딱히 여기적은포트로 안되는데...
+  - 기본은 8888임 하나더키면 8889됨
+
 ```
 c.NotebookApp.port =
 ```
 
 ## jupyter 실행
 - 그냥 `jupyter notebook` 하면 localhost 켜짐. 원격접속 안됨
+
 ```
 jupyter notebook --ip=[ip주소]
 ```
