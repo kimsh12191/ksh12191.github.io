@@ -37,6 +37,7 @@ _posts안에 post할 markdown파일을 넣는다
 ---
 layout: post
 title: 제목
+categories: 어떤 카테고리에 속하는지.
 ---
 ```
 파일명 규칙
@@ -64,4 +65,3 @@ ipython nbconvert *.ipynb --to markdown
 
 
 ## Symlink error
-
