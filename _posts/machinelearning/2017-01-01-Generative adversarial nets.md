@@ -2,9 +2,9 @@
 layout: post
 title: Generative Adversarial Nets (GANs)
 modified:
-categories: study
+categories: machinelearning
 excerpt:
-tags: []
+tags: [GAN]
 image:
   feature:
 ---

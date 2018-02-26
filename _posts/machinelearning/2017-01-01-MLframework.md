@@ -2,9 +2,9 @@
 layout: post
 title: ML framwork
 modified:
-categories: blog
+categories: machinelearning
 excerpt:
-tags: []
+tags: [MLFramework]
 image:
   feature:
 ---

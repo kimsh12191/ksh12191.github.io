@@ -2,7 +2,7 @@
 layout: post
 title: Convolution Autoencoder toy example
 modified:
-categories: blog
+categories: machinelearning
 excerpt:
 tags: []
 image:
@@ -20,11 +20,11 @@ import tensorflow as tf
 import os
 import tensorflow.examples.tutorials.mnist.input_data as input_data
 from sklearn.utils import shuffle
-%matplotlib inline 
+%matplotlib inline
 
 ```
 
-# 1. 이미지 예제 
+# 1. 이미지 예제
 
 
 참고 : https://github.com/sjchoi86/tensorflow-101/blob/master/notebooks/cae_mnist.ipynb
@@ -62,7 +62,7 @@ print ("Packages loaded")
 
 ## 1.2. Define Network
 
-- convolution layer와 bias에 들어갈 변수를 초기화 한다. 
+- convolution layer와 bias에 들어갈 변수를 초기화 한다.
 - random_normal로 초기화
 - 제일 헷갈리는 파라미터의 dimension
     - ksize, ksize, 1, n1
@@ -94,7 +94,7 @@ biases = {
 
 - 레이어의 구성은 딱 두가지, convolution layer, deconvolution layer
     - convolution layer는 세개이고, 바꿀 수 있는 주요 parameter는 stride, padding
-    
+
 - 사실 실제로 convolution, deconvolution layer를 구성하기 위해서는 아래 식을 이용해서 convolution layer를 지나고 나면 크기가 어떻게 변화할지 예상해야한다.
     $$\frac{N(input 크기)-F(padding)}{S(stride)} + 1$$
 
@@ -107,23 +107,23 @@ def cae(_X, _W, _b, _keepprob):
         , strides=[1, 2, 2, 1], padding='SAME'), _b['be1']))
     _ce1 = tf.nn.dropout(_ce1, _keepprob)
     _ce2 = tf.nn.sigmoid(tf.add(tf.nn.conv2d(_ce1, _W['ce2']
-        , strides=[1, 2, 2, 1], padding='SAME'), _b['be2'])) 
+        , strides=[1, 2, 2, 1], padding='SAME'), _b['be2']))
     _ce2 = tf.nn.dropout(_ce2, _keepprob)
     _ce3 = tf.nn.sigmoid(tf.add(tf.nn.conv2d(_ce2, _W['ce3']
-        , strides=[1, 2, 2, 1], padding='SAME'), _b['be3'])) 
+        , strides=[1, 2, 2, 1], padding='SAME'), _b['be3']))
     _ce1 = tf.nn.dropout(_ce3, _keepprob)
     # Decoder
     _cd3 = tf.nn.sigmoid(tf.add(tf.nn.conv2d_transpose(_ce3, _W['cd3']
         , tf.pack([tf.shape(_X)[0], 7, 7, n2]), strides=[1, 2, 2, 1]
-        , padding='SAME'), _b['bd3'])) 
+        , padding='SAME'), _b['bd3']))
     _cd3 = tf.nn.dropout(_cd3, _keepprob)
     _cd2 = tf.nn.sigmoid(tf.add(tf.nn.conv2d_transpose(_cd3, _W['cd2']
         , tf.pack([tf.shape(_X)[0], 14, 14, n1]), strides=[1, 2, 2, 1]
-        , padding='SAME') , _b['bd2'])) 
+        , padding='SAME') , _b['bd2']))
     _cd2 = tf.nn.dropout(_cd2, _keepprob)
     _cd1 = tf.nn.sigmoid(tf.add(tf.nn.conv2d_transpose(_cd2, _W['cd1']
         , tf.pack([tf.shape(_X)[0], 28, 28, 1]), strides=[1, 2, 2, 1]
-        , padding='SAME'), _b['bd1'])) 
+        , padding='SAME'), _b['bd1']))
     _cd1 = tf.nn.dropout(_cd1, _keepprob)
     _out = _cd1
     return {'input_r': _input_r, 'ce1': _ce1, 'ce2': _ce2, 'ce3': _ce3
@@ -147,7 +147,7 @@ x = tf.placeholder(tf.float32, [None, dim])
 y = tf.placeholder(tf.float32, [None, dim])
 keepprob = tf.placeholder(tf.float32)
 pred = cae(x, weights, biases, keepprob)['out']
-cost = tf.reduce_sum(tf.square(cae(x, weights, biases, keepprob)['out'] 
+cost = tf.reduce_sum(tf.square(cae(x, weights, biases, keepprob)['out']
             - tf.reshape(y, shape=[-1, 28, 28, 1])))
 learning_rate = 0.001
 optm = tf.train.AdamOptimizer(learning_rate).minimize(cost)
@@ -168,7 +168,7 @@ print ("Functions ready")
         1. data argumentation : training 데이터의 수를 매우매우 늘리는 효과
         2. noise에 로버스트
 
-- iteration안에서 학습이 잘되고있나 알고싶어 중간중간 input > CAE > output 비교할 수 있는 코드작성 
+- iteration안에서 학습이 잘되고있나 알고싶어 중간중간 input > CAE > output 비교할 수 있는 코드작성
 
 
 ```python
@@ -245,14 +245,14 @@ print("Training done. ")
 ![png](/images/02CAE_EX_files/02CAE_EX_12_9.png)
 
 
-    Training done. 
+    Training done.
 
 
 # 2. 신호 예제
 
 우리는 신호로 할꺼니까 cos을 이용해서  신호예제를만들자.
 
-이미지도 신호이긴 하지만, 우리는 input 신호를 ($1\times N$)크기의 신호로 볼 것이다. 
+이미지도 신호이긴 하지만, 우리는 input 신호를 ($1\times N$)크기의 신호로 볼 것이다.
 
 
 - **기존의 신호처리**의 경우 FFT나 wavelet transform을 통해 신호의 특성을 가장 잘 살리는 형태로 데이터를 변형시켜서 분석을 시행하였다.
@@ -260,7 +260,7 @@ print("Training done. ")
     - wavelet transform은 mother waverlet을 기반으로 다양한 크기의 wavelet을 만들어 원신호에 convolution 함으로써 주파수대역(scale)에 표현하는 방식이다.
     - 하지만 mother wavelet을 결정해 주어야 하는 단점이 있다.
     - 여기서 idea를 착안하여 convolution neural network로 부터 새로운 정보를 얻어 보고자 한다.
-    
+
 - **CNN**의 convolution layer는 이미지를 잘 구분 할 수 있도록 그 형태가 결정된다.
     - 신호에대해서 convolution layer를 학습한다면 network가 데이터를 기반으로 가장 좋은 convolution layer를 만들어 낼 것이다.
     - 이 layer는 앞의 mother wavelet을 이용해 만들어낸 wavelet과 같은 역할을 하는 친구로 해석할 수 있다.
@@ -275,8 +275,8 @@ print("Training done. ")
 
 ```python
 X = np.linspace(0.05,2,100)
-signal_train = np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(1000,100)) 
-signal_test =  np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(200,100)) 
+signal_train = np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(1000,100))
+signal_test =  np.cos(2*np.pi*X) + np.random.normal(loc=0.0, scale=0.1, size=(200,100))
 ```
 
 어떻게 생겨먹은 샘플인가?
@@ -294,7 +294,7 @@ plt.show()
 ## 2.2. Define Network
 
 -  CNN 모델에 적용하는 것보다는 가능성을 보기위해서는 CAE모델에 학습시켜 convolution이 신호에 대해서 어떤 반응을 보이는지 확인하는 것이 먼저라고 생각하여 CAE모델에 적용
-- 특이하게 convolution layer는 단 하나만 주었다. 
+- 특이하게 convolution layer는 단 하나만 주었다.
     - 우리는 이 모델을 통해서 convolution layer를 이용해 **데이터만으로 mother wavelet**을 만들어 낼 것이다.
     - 그런데 wavelet transform에서 wavelet을 거쳐서 나온 신호에 또 wavelet을 취하는 것은 일반적이지 않다.
         - CNN은 모델의 성능을 최대로 높이기 위해 convolution layer를 여러개 넣는다.
@@ -341,7 +341,7 @@ def cae(_X, _W, _b, _keepprob):
         with tf.name_scope('weights'):
             _cd1 = tf.nn.tanh(tf.add(tf.nn.conv2d_transpose(_ce1, _W['cd1']
                 , tf.pack([tf.shape(_X)[0], 1, 100, 1]), strides=[1, 1, 1, 1]
-                , padding='SAME'), _b['bd1'])) 
+                , padding='SAME'), _b['bd1']))
         with tf.name_scope('dropout'):
             _cd1 = tf.nn.dropout(_cd1, _keepprob)
     with tf.name_scope('output'):   
@@ -375,11 +375,11 @@ with tf.name_scope('model'):
     CAE_model, weight_tensor, bias_tensor =  cae(x, weights, biases, keepprob)
 
 with tf.name_scope('train'):
-    cost = tf.reduce_sum(tf.square(CAE_model['out'] 
+    cost = tf.reduce_sum(tf.square(CAE_model['out']
                 - tf.reshape(y, shape=[-1, 1, 100, 1])))
     ce_summ = tf.scalar_summary("sum of square", cost)
     optm = tf.train.AdamOptimizer(learning_rate).minimize(cost)
-    
+
 with tf.name_scope('accuracy'):
     with tf.name_scope('correct_prediction'):
             correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(CAE_model['out'], 1))
@@ -391,7 +391,7 @@ print ("Functions ready")
     Functions ready
 
 
-## 2.4. Training 
+## 2.4. Training
 - batch normalize나 noise추가 하는 (생각해보면 부가적인, 성능은 높이는데(overfitting을 피한다던지) 코드는 뺌
 - parameter를 tensor에서 꺼내오는 코드 추가
 - 그리고 tensorboard를 그리는 코드, model저장하는 코드 추가
@@ -474,7 +474,7 @@ with tf.Session() as sess:
     [9000/10000] cost: 5.1111
     Accuracy at step 9000: 0.0350001
     save result...
-    Training done... 
+    Training done...
 
 
 - 얘네가 wavelet의 maxican hat wavelet과 뭔가 비슷하게 나오는것 같다.
