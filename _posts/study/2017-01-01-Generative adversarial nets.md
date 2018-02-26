@@ -2,7 +2,7 @@
 layout: post
 title: Generative Adversarial Nets (GANs)
 modified:
-categories: Study
+categories: study
 excerpt:
 tags: []
 image:
