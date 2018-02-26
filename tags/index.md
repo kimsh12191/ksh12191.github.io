@@ -22,6 +22,6 @@ search_omit: true
   {% for post in site.tags[this_word] %}{% if post.title != null %}
     <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span></a></li>
   {% endif %}{% endfor %}
-  <a href="#main" class="back-to-top">Back to Top ↑</a>
+  <a href="#entry-title" class="back-to-top">Back to Top ↑</a>
   </ul>
 {% endunless %}{% endfor %}
