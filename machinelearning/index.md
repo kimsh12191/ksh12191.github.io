@@ -7,7 +7,7 @@ search_omit: true
 
 
 
-{% capture site_tags %}{% for tag in site.categories.machinelearning.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 {% assign tags_list = site_tags | split:',' | sort %}
 
 <ul class="tag-box inline">
