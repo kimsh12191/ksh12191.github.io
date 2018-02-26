@@ -4,7 +4,7 @@ title: ML framwork
 modified:
 categories: machinelearning
 excerpt:
-tags: [MLFramework]
+tags: [Framework]
 image:
   feature:
 ---

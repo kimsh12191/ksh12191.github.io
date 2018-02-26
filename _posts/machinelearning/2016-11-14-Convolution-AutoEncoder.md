@@ -4,7 +4,7 @@ title: Convolution Autoencoder toy example
 modified:
 categories: machinelearning
 excerpt:
-tags: []
+tags: [DL]
 image:
   feature:
 ---
