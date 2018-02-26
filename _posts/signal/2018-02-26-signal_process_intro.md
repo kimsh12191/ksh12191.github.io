@@ -4,7 +4,7 @@ title: [180226]Signal processing lecture
 modified:
 categories: signal
 excerpt:
-tags: [signalprocessing]
+tags: []
 image:
   feature:
 ---
@@ -18,4 +18,4 @@ image:
 3. Complex signal : 허수..?!!
     - Rectangular form 혹은 Polar form으로 나타냄
     - 나중에 또나오겟지? 지금대충나온거겟지?
-4.
+4. ㅇㅇ
