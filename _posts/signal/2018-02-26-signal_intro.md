@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [180226]Signal processing lecture
+title: 180226_Signal processing lecture
 modified:
 categories: signal
 excerpt:
