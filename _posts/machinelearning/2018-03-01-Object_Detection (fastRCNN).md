@@ -11,8 +11,8 @@ image:
 
 - Object Detection - fast RCNN 정리
 
-[RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
-
+[01. RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
+[02. Fast RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(fastRCNN)/).
 
 # 1. 단점 극복
   - RCNN은 잘되지만 느리다.. (안습)
