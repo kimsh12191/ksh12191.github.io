@@ -11,7 +11,8 @@ image:
 
 - Object Detection - RCNN 정리
 
-(나중에 여기다가 다른 Object detection 링크도 달아야지)
+[01. RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
+[02. Fast RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(fastRCNN)/).
 
 # 1. Introduction
   - object detection
