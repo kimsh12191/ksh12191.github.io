@@ -11,6 +11,8 @@ image:
 
 - Object Detection - RCNN 정리
 
+(나중에 여기다가 다른 Object detection 링크도 달아야지)
+
 # 1. Introduction
   - object detection : 모델의 입장에서 생각해보자. 모델이 영상을 본다. step1. 그 영상속에서 어떤 물체가 있는지 없는지 찾는다. step2. 만약 물체가 있다면 그 물체가 무엇을 나타내는지 분류한다.
 
@@ -28,10 +30,13 @@ image:
 (R)
  ![png](/images/RCNN/01_rcnn_structrue.png) Figure 1 [2]
  RCNN의 구조를 잘 보여주는 그림
+ - 이 그림만 어느정도 이해했으면 RCNN에서 건질거 다건진듯
+ - __좀더 상세 STEP설명__
+    - 어디감?
 
  - 이 친구는 잘됨/하지만 속도가 느리지. 가장 강력한 속도가 느린 이유는 이미지 1장당 region proposal개수 만큼 CNN 연산을 해줘야해서  inference 속도가 매우 느림.
 
-
-감사합니다. 참고했어요
+---
+- 감사합니다. 참고했어요
 [1] https://blog.lunit.io/2017/06/01/r-cnns-tutorial/
 [2] Girshick, Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation.
