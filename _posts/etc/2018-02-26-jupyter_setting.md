@@ -4,7 +4,7 @@ title: Jupyter 외부접속 설정
 modified:
 categories: etc
 excerpt:
-tags: []
+tags: [python]
 image:
   feature:
 ---
