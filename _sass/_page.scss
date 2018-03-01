@@ -5,6 +5,9 @@
 /*
    Main content
    ========================================================================== */
+img.alignleft{float:left}
+img.alignright{float:right}
+img.aligncenter{display:block;margin:0 auto}
 
 #main {
 	@include clearfix;

@@ -58,12 +58,11 @@ _, C2, C3, C4, C5 = resnet_graph(input_image, "resnet101", stage5=True)
 feature_maps = [C2, C3, C4, C5]
 rcnn_class, rcnn_bbox = build_fastRCNN(rois, feature_maps)
 ```
-$$\frac{N(input 크기)-F(padding)}{S(stride)} + 1$$
 - Loss
   - 그렇게 어렵지 않음
   - $$L_{cls}$$ : classification을 위한 Loss 부분 이게 낮아지면 분류성능이 좋아지겠지
-  - \(L_{loc}\) : regressor 부분, bbox를 좀더 정교하게 만들기 위한. 보통 L1 으로 predict 와 ground truth 사이의 거리를 계산하는 식으로 이루어짐
-  - \(\lambda\) : \(L_{cls}\)와 \(L_{loc}\)사이의 균형을 맞춰주는 역할.
+  - $$L_{loc}$$ : regressor 부분, bbox를 좀더 정교하게 만들기 위한. 보통 L1 으로 predict 와 ground truth 사이의 거리를 계산하는 식으로 이루어짐
+  - $$\lambda$$ : $$L_{cls}$$와 $$L_{loc}$$사이의 균형을 맞춰주는 역할.
 
 ---
 - 감사합니다. 참고했어요
