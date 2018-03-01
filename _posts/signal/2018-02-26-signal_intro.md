@@ -19,4 +19,5 @@ image:
 3. Complex signal : 허수..?!!
     - Rectangular form 혹은 Polar form으로 나타냄
     - 나중에 또나오겟지? 지금대충나온거겟지?
-4. ㅇㅇ
+
+- 의미없다..말이시그널이지 아직 시그널 시작도안함.
