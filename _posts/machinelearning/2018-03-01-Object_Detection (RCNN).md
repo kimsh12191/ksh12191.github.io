@@ -39,7 +39,7 @@ image:
     3. SVM으로 그 영역의 사물이 어떤 것을 나타내는지  classify한다. (와 뭔가 난잡한데? 빡세다.)
 
 <center>
-   ![png](/images/RCNN/01_rcnn_structrue.png)
+   <img src="/images/RCNN/01_rcnn_structrue.png">
 </center>
 
 <center>
