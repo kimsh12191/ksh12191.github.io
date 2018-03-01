@@ -50,17 +50,18 @@ image:
 - 코드를 이용해서 설명하는게 좋을거같긴 한데, 필요한가? 사실 Fast RCNN은 그냥 CNN임. loss부분에 bbox regressor가 추가되어있는
 - 아래 같은 느낌으로 이해하면 좋을듯. (build_fastRCNN 안에 함수를 여기서 설명하고있을 필요는 없을듯)
   - 조금 다르긴함, RoI를 받아서 feature map에서 그부분을 짤라낸다음 FC를 취해줌.
-```python
 
+```python
 _, C2, C3, C4, C5 = resnet_graph(input_image, "resnet101", stage5=True)
 feature_maps = [C2, C3, C4, C5]
 rcnn_class, rcnn_bbox = build_fastRCNN(rois, feature_maps)
 ```
+
 - Loss
   - 그렇게 어렵지 않음
-  - $L_{cls}$ : classification을 위한 Loss 부분 이게 낮아지면 분류성능이 좋아지겠지
-  - $L_{loc}$ : regressor 부분, bbox를 좀더 정교하게 만들기 위한. 보통 L1 으로 predict 와 ground truth 사이의 거리를 계산하는 식으로 이루어짐
-  - $\lambda$ : $L_{cls}$와 $L_{loc}$사이의 균형을 맞춰주는 역할.
+  - \[L_{cls}\] : classification을 위한 Loss 부분 이게 낮아지면 분류성능이 좋아지겠지
+  - \[L_{loc}\] : regressor 부분, bbox를 좀더 정교하게 만들기 위한. 보통 L1 으로 predict 와 ground truth 사이의 거리를 계산하는 식으로 이루어짐
+  - \[\lambda\] : \[L_{cls}\]와 \[L_{loc}\]사이의 균형을 맞춰주는 역할.
 
 ---
 - 감사합니다. 참고했어요
