@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: 
 title: ML framwork
 modified:
-categories: machinelearning
+categories:
 excerpt:
-tags: [Framework]
+tags: []
 image:
   feature:
 ---

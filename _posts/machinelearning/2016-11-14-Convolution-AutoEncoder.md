@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: 
 title: Convolution Autoencoder toy example
 modified:
-categories: machinelearning
+categories:
 excerpt:
-tags: [DL]
+tags: []
 image:
   feature:
 ---

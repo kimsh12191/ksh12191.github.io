@@ -1,10 +1,10 @@
 ---
-layout: post
+layout:
 title: Generative Adversarial Nets (GANs)
 modified:
-categories: machinelearning
+categories:
 excerpt:
-tags: [DL]
+tags: []
 image:
   feature:
 ---
