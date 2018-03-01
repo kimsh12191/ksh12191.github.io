@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tag Index
+title: Tag
 excerpt: "An archive of posts sorted by tag."
 search_omit: false
 ---
@@ -22,6 +22,6 @@ search_omit: false
   {% for post in site.tags[this_word] %}{% if post.title != null %}
     <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span></a></li>
   {% endif %}{% endfor %}
-  <a href="#nav-toggle" class="back-to-top">Back to Top ↑</a>
+  <a href="#site-nav" class="back-to-top">Back to Top ↑</a>
   </ul>
 {% endunless %}{% endfor %}
