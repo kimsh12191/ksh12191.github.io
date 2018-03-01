@@ -38,9 +38,11 @@ image:
     2. CNN으로 그 영역의 중요한 feature 를 추출한 후
     3. SVM으로 그 영역의 사물이 어떤 것을 나타내는지  classify한다. (와 뭔가 난잡한데? 빡세다.)
 
-
+<div class="pull-right">
  ![png](/images/RCNN/01_rcnn_structrue.png)
-          Figure 1 [2] RCNN의 구조를 잘 보여주는 그림
+ </div>
+
+<center>Figure 1 [2] RCNN의 구조를 잘 보여주는 그림</center>
 
  - 이 그림만 어느정도 이해했으면 RCNN에서 건질거 다건진듯
  - __좀더 상세 STEP설명__

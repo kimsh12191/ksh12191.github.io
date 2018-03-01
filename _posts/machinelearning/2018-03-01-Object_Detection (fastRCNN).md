@@ -35,9 +35,9 @@ image:
 
 ![png](/images/RCNN/02_fastrcnn_structure.png  "제목2") {.aligncenter}
 
-<div margin: auto>
+<center>
            Figure 1 [2] Fast RCNN의 구조를 잘 보여주는 그림
-</div>
+</center>
 
 # Fast RCNN?
 - 이미지에 대해서 한번만 CNN을 적용함으로써 여러번 적용하던 RCNN에 비해서 속도가 더 빨라짐.
