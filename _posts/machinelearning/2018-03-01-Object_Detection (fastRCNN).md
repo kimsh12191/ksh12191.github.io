@@ -33,8 +33,10 @@ image:
       - (동일한 크기로 만들어주는 이작업은 RCNN에서도 이루어지고 있었음)
   4. [RoI] 받아서, 어떤 사물인지 분류만 하는게 아니라 [bbox regressor]로 사각형을 좀더 조정함. 잘 찾을수있게,
 
- ![png](/images/RCNN/02_fastrcnn_structure.png)
-          Figure 1 [2] Fast RCNN의 구조를 잘 보여주는 그림
+![png](/images/RCNN/02_fastrcnn_structure.png  "제목2") {.aligncenter}
+<div margin: auto>
+           Figure 1 [2] Fast RCNN의 구조를 잘 보여주는 그림
+</div>
 
 # Fast RCNN?
 - 이미지에 대해서 한번만 CNN을 적용함으로써 여러번 적용하던 RCNN에 비해서 속도가 더 빨라짐.
