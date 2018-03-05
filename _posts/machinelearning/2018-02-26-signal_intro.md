@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 180226_Signal processing lecture
+title: Signal processing lecture Intro
 modified:
-categories: signal
+categories: machinelearning
 excerpt:
 tags: [signal processing]
 image:
