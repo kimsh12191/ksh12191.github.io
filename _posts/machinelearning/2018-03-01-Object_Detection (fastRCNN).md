@@ -9,7 +9,7 @@ image:
   feature:
 ---
 
-- Object Detection - fast RCNN 정리
+- Object Detection 
   - [01. RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
   - [02. Fast RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(fastRCNN)/).
 
