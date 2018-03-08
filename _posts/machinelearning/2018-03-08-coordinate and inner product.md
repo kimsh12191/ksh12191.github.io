@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Inner product 와 coordinate change
+title: Coordinate change
 modified:
 categories: machinelearning
 excerpt:
@@ -10,6 +10,8 @@ image:
 ---
 
 # Coordinates change
+
+
 - 굉장히 별거 아닌거 같아보이지만 중요함.
   - time domain -> frequency domain도 비슷한 컨셉으로 이루어지는거 같고..
   - __특히__ PCA의 경우로 차원 축소할 때, eigen vector를 basis로 가지는 coordinates로 변환하고, eigen value가 높은 것과 짝을 이루는 eigen vector의 basis만 남김으로써 차원축소를 진행함.
