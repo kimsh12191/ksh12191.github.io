@@ -160,3 +160,41 @@ $ sudo dpkg -i /tmp/nvidia-docker*.deb && rm /tmp/nvidia-docker*.deb
   - 일단 docker의 구성을 생각해보자
   - (이해하기로) 도커는 image와 container라는 두가지 요소가 (아마도 이거두개만 쓸거기때문에) 중요하다.
   - image는 주형틀 같은거고, container는 image를 이용해서 내컴퓨터에 진짜 놓여질 작품이랄까?  
+
+- image 다운받기.
+  - image가 container랑 같이 받아졌던거같은데..
+  - 가라니까..ㅋㅋ둘다깔고 container는 내맘에 들게바꾸면되지
+  - 우선 docker는 sudo 권한이있어야해서 ```sudo su```로 sudo 권한 항상먹혀있다고 가정
+  - 뒤쪽에 ```:latest-gpu``` 부분을 수정하면 다른 image 받을 수있음 [image? 목록 site](https://hub.docker.com/r/tensorflow/tensorflow/tags/)
+
+```
+nvidia-docker run -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3
+```
+
+- 다운받아짐
+  - image 목록 확인하기 : ```nvidia-docker image```
+  - container 목록 확인하기 : ```nvidia-docker ps -a```
+  - 삭제 : ```nvidia docker rm (container id) 그리고 rmi (image id)```
+
+- container 만들기 (이거 중요함)
+  - ```nvidia-docker run -it -d -p (OS포트):8888 --name (container_name) -v (/data:/data) (docker_image_id)```
+  - 일단 ```container_name```은 이제부터 container를 실행할때마다 만날친구
+  - ```(/data:/data)``` : 도커와 내컴퓨터가 통신할? 마운트된 폴더? 매개체? 왼쪽이 내컴퓨터 오른쪽이 도커로 기억함.
+  - ```docker_image_id``` nvidia-docker images에 있는 container에 넣고싶은 image의 아이디를 넣어주면됨.
+
+- 실행
+  - 도커에서나오는건 안에서 ```exit```
+  - 그래도 도커는 돌고있다.
+    - 실행중지는 ```nvidia-docker stop container_id_or_name```
+    - 그담에 키고 exec 해야함 그건 ```nvidia-docker start container_id_or_name```
+
+- 도커실행은 아래처럼
+
+```
+nvidia-docker exec -it (container_id_or_name) /bin/bash
+```  
+
+- 텐서플로 container는 exec과 동시에 쥬피터 접속이 가능하다.
+  - 근데 토큰..
+  - 토큰은 ```jupyter notebook list```로 확인이 가능함
+  - ```IP주소:8888``` 로 원격접속도 가능 > 역시 토큰 찾아서 해줘야함. SSH로들어오든 뭐든 알아서해보셈.
