@@ -142,3 +142,20 @@ $ sudo apt-get update
 
 $ apt-cache madison docker-engine
 ```
+
+# 4. nvidia-docker 설치
+- 드디어 대망의.. nvidia-docker
+- 처음에모르고 여기부터 해가지고 다꼬임
+
+```
+# nvidia-docker 다운로드
+$ wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.0-rc.3/nvidia-docker_1.0.0.rc.3-1_amd64.deb
+
+# 설치
+$ sudo dpkg -i /tmp/nvidia-docker*.deb && rm /tmp/nvidia-docker*.deb
+```
+
+- nvidia-docker가 깔렷지만 다되는건 아님
+  - 일단 docker의 구성을 생각해보자
+  - (이해하기로) 도커는 image와 container라는 두가지 요소가 (아마도 이거두개만 쓸거기때문에) 중요하다.
+  - image는 주형틀 같은거고, container는 image를 이용해서 내컴퓨터에 진짜 놓여질 작품이랄까?  
