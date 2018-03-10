@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ubuntu 설치하기
+title: ubuntu nvidia-docker 설치하기.
 modified:
 categories: etc
 excerpt:
@@ -9,116 +9,136 @@ image:
   feature:
 ---
 
-# Ubuntu 설치하기
+# nvidia-docker 설치하기
 
-# 1. 우분투설치를 위한 USB 만들기
-- 흔히 말하는 부팅usb(?)를 우분투 용으로 만들어주어야 한다.
-  - 나처음깔떈 14.04썻는데 이번엔 16.04한번가보자 (16.04가 한글은 지원잘해주는걸로 알고있음)
-  - [우분투 iso 다운로드 링크](https://www.ubuntu.com/download) : iso 다운받고
-  - [USB를 부팅 디스크로 만들기](https://rufus.akeo.ie/) : 이링크에서 rufus를 다운받자
+# 순서
+- 중요하다. 순서.
+- 이거잘못되서 몇번을 우분투를 다시깔았는지 모르겠따. (*시무룩*)
 
+1. 그래픽카드 driver 설치하기
+2. cuda, cudnn 설치하기
+3. 도커 engine 설치하기
+4. nvidia-docker 설치하기.
 
-- Usb에 iso를 넣자
+# 1. Nvidia 그래픽 카드 설치하기
+- 홈페이지 들어가서 본인에게 맞는 그래픽카드를 찾는다
+  - nvidia-390? 뭐이런걸 알려준다.
+- 설치는 터미널에서..?
 
-<center>
-   <img src="/images/ubuntu/01_install_ubuntu.png">
-</center>
+```
+$ sudo add-apt-repository ppa:graphics-drivers/ppa
+$ sudo apt-get update
+$ sudo apt-get install nvidia-375
+```
 
-<center>
-           rufus 키면 그림과같다.
-</center>
+- 설치가 끝나면 재부팅 해주기
+  - 잘 되었는지 확인하는건 ```nvidia-smi``` 로 충분할 듯 하다.
 
-- 부팅디스크로 만들 usb를 선택하고 (ISO보단 용량이커야함, 그리고 포맷됨) 빨간네모박스를 눌러서 ubuntu iso를 선택한다.
+# 2. CUDA/cudnn 설치하기
+- [쿠다툴킷 다운로드 홈페이지](https://developer.nvidia.com/cuda-downloads)
+- [cudnn 다운로드 홈페이지](https://developer.nvidia.com/rdp/cudnn-download)
 
-- USB가 만들어질거임
+## 2.1 CUDA 설치
+- cuda를 깐 경로로 접근한다 (아마도 다운로드?)
 
-# 2. 우분투를 깔아보자
-- 그전에 우분투깔 공간마련하기.
-  - 일단 우분투가 들어갈 [파티션]이 따로있어야함. 가능하면 물리적인 하드자체가 다른게 좋을거같음
-    - (실제로 본인은 그럤음. C드라이브는 윈도우, D드라이브의 반은 저장용, 나머지반은 우분투깔용)
+```
+# 실행
+sudo sh cuda_9.1.85_387.26_linux.run
+```
 
-    <center>
-       <img src="/images/ubuntu/01_setting_partition.png">
-    </center>
+- 무슨 글이 쫘아아악 뜨는데 ```Ctrl``` + ```c```로 넘긴다.
 
-    <center>
-      일로들어가면 파티션 수정이가능함(기존걸 축소하면된다.)
-    </center>
+- 질문 대답하기
+```
+Do you accept the previously read EULA?
+accept/decline/quit: accept
 
-- 이걸했으면 재부팅을 한다.
-  - 까먹고 스샷안찍음
-  - 바이오스 들어가서 부팅순서를 바꿈
-    - 모르면다해봐도되는데, 윈도우는 일단 가장먼저가 아님. 무슨 usb가 제일먼저
-    - 그럼 우분투 설치화면이 뜨거나.. 아니면 grub이 뜨거나(검은화면, 어쨌든 install ubuntu를 들어갈 것)
+Install NVIDIA Accelerated Graphics Driver for Linux?
+(y)es/(n)o/(q)uit: n
 
-# 3. 우분투 설치 (세부)
-- 자그럼이제 사진으로 퉁친다.
-  - 그리고 약간의 설명?
-<center>
-   <img src="/images/ubuntu/01_ubuntu.png">
-</center>
-<center>
-  1. 이것저것 쉬운 과정을 거치면.. 여기서 첫고민을 함// 그럼 둘다하면됨
-</center>
-<br>
+Install the CUDA 9.1 Toolkit?  
+(y)es/(n)o/(q)uit: y
 
-<center>
-   <img src="/images/ubuntu/02_ubuntu.png">
-</center>
-<center>
-  2. 우분투를 어디설치할것인가? / 윈도우랑 같이 할수있을거같지?
-</center>
-<center>
-  안됨/아무것도없는 파티션에할거에요 = 기타 선택
-</center>
-<br>
+Enter Toolkit Location  
+ [ default is /usr/local/cuda-9.1 ]:
 
-<center>
-   <img src="/images/ubuntu/03_ubuntu.png">
-</center>
-<center>
-  3. 도착하면. 지금컴퓨터는 드러운데 깔끔할수도 있음. 아까 2번인가?에서만든 텅빈 파티션이 보인다.
-</center>
-<center>
-  이미지에서는 남은공간이라고 표현되어있음.
-</center>
-<center>
-  저게클릭된건지 모르겠지만.. 여튼 클릭하고 '+' 를 누른다.
-</center>
-<br>
+Do you want to install a symbolic link at /usr/local/cuda?  
+(y)es/(n)o/(q)uit: y
+
+Install the CUDA 9.1 Samples?  
+(y)es/(n)o/(q)uit: n
+
+```
+
+- 환경변수 설정
+  - 안에 본인 버전에 맞는 경로를 해줘야한다
+  - cuda-9.1 부분
+  - 이걸하고나서 home으로 가서 ```sudo gedit .bashrc``` 하면 제일마지막에 내가 쳣던게 들어가있는 것을 확인할 수 있다.
 
 
-<center>
-   <img src="/images/ubuntu/04_ubuntu.png">
-</center>
-<center>
-  4. 일단 스왑영역을 만들자. 그림처럼하면되고. (아마 가상메모리?역할인듯 잘모르겠음)
-</center>
-<center>
-  크기는 램의 배수로 넣으면된다고함
-</center>
-<br>
+```
+$ echo -e "\n## CUDA and cuDNN paths"  >> ~/.bashrc
+$ echo 'export PATH=/usr/local/cuda-9.1/bin:${PATH}' >> ~/.bashrc
+$ echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64:${LD_LIBRARY_PATH}' >> ~/.bashrc
+```
 
-<center>
-   <img src="/images/ubuntu/05_ubuntu.png">
-</center>
-<center>
-  5. 본격. 우분투 들어갈 공간. (스왑영역만들고 또 남은공간 클릭하고 '+' 눌렀음)
-</center>
-<center>
-  저거랑 똑같이하면됨 (크기는 다르게, 마운트위치는 'home' 이랑 비슷한거임 '/' 하는걸로)
-</center>
-<br>
+- 환경변수 적용 및 설치여부 테스트
 
+```
+$ source ~/.bashrc
+$ nvcc --version
+```
 
-<center>
-   <img src="/images/ubuntu/07_ubuntu.png">
-</center>
+## 2.2 cudnn 설치
+- 깔고 압축 풀고 그 경로에서 아래와같이한다.
+  - cuda한테 복사하는 작업임. 따라서 오른쪽 경로는 본인에 맞게. 아마 버전 정도만 바꿔주면 됨
 
-<center>
-  6. 아까 남은공간이었떤 친구가  '/dev/sda5' 로 바꼇음.
-</center>
-<center>
-  마지막으로 부트로더를 설치할 장치를 우분투가 깔릴 장치인 'sda' 와 똑같이 해준다.
-</center>
-<br>
+```
+  $ sudo cp cuda/lib64/* /usr/local/cuda-9.1/lib64/
+  $ sudo cp cuda/include/* /usr/local/cuda-9.1/include/
+  $ sudo chmod a+r /usr/local/cuda-9.1/lib64/libcudnn*
+  $ sudo chmod a+r /usr/local/cuda-9.1/include/cudnn.h
+```
+
+# 3. 도커 engine 설치
+- 하..힘들다. 이젠 바로 도커엔진으로가자
+  - 참고사이트
+    - 진짜넘나감사
+    - [여기여기](https://docs.docker.com/cs-engine/1.12/#install-on-ubuntu-1404-lts-or-1604-lts)
+      - 중간쯤? 에 있는 Install on Ubuntu 14.04 LTS or 16.04 LTS 이다
+
+- 아직도 sudo apt-get update를 정확히 모르지만 한다. 그다음 설치를 위해 필요한 재료 install
+
+```
+$ sudo apt-get update
+
+$ sudo apt-get install --no-install-recommends \
+    apt-transport-https \
+    curl \
+    software-properties-common
+
+```
+
+- 그 다음작업은 도커의 public key를 다운로드하고 import 하는 것
+
+```
+$ curl -fsSL 'https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e' | sudo apt-key add -
+```
+
+- 뭔지몰라..해야함
+
+```
+$ sudo add-apt-repository \
+   "deb https://packages.docker.com/1.12/apt/repo/ \
+   ubuntu-$(lsb_release -cs) \
+   main"
+
+ ```
+
+ - 마지막으로 도커엔진 설치!!
+
+```
+$ sudo apt-get update
+
+$ apt-cache madison docker-engine
+```
