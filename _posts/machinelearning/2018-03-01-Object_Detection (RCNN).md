@@ -4,7 +4,7 @@ title: Object Detection - RCNN
 modified:
 categories: machinelearning
 excerpt:
-tags: [DL, Object detection]
+tags: [Deep Learning, Object detection]
 image:
   feature:
 ---

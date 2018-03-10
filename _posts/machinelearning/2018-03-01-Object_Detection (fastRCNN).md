@@ -4,12 +4,12 @@ title: Object Detection - fastRCNN
 modified:
 categories: machinelearning
 excerpt:
-tags: [DL, Object detection]
+tags: [Deep Learning, Object detection]
 image:
   feature:
 ---
 
-- Object Detection 
+- Object Detection
   - [01. RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
   - [02. Fast RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(fastRCNN)/).
 

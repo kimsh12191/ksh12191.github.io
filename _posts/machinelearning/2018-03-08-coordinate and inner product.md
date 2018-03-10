@@ -4,7 +4,7 @@ title: Coordinate change
 modified:
 categories: machinelearning
 excerpt:
-tags: [ML]
+tags: [Machine Learning]
 image:
   feature:
 ---

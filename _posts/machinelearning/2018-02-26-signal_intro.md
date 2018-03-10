@@ -4,7 +4,7 @@ title: Signal processing lecture Intro
 modified:
 categories: machinelearning
 excerpt:
-tags: [signal processing]
+tags: [Signal Processing]
 image:
   feature:
 ---
