@@ -2,7 +2,7 @@
 layout: post
 title: 라즈베리파이 원격접속하기
 modified:
-categories: raspi
+categories: Raspi
 excerpt:
 tags: [Raspi]
 image:
