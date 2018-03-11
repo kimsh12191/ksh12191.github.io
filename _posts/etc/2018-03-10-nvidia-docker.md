@@ -49,6 +49,7 @@ sudo sh cuda_9.1.85_387.26_linux.run
 - 무슨 글이 쫘아아악 뜨는데 ```Ctrl``` + ```c```로 넘긴다.
 
 - 질문 대답하기
+
 ```
 Do you accept the previously read EULA?
 accept/decline/quit: accept
