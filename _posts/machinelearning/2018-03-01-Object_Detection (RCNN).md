@@ -71,10 +71,10 @@ image:
     - 많은 수의 이미지를 학습한 결과 생기는 아주 general한 conv feature는 이미지의 중요한 정보를 아주 잘 지니고있다고 할수있음.
     - fine tuning : domain에 맞게 feature를 추가 튜닝.
 
-- pretraining과 fine tuning에 있어서 Fc와 conv의 차이
-  - 이 논문에 이걸 비교해놓은 부분이 있는데 흥미로움
-  - conv 부분만 finetuning했을땐 성능향상이 미흡함 반면 fc를 추가하여 finetuning했을땐 성능이 확실히 향상됨
-  - 일반화된 feature 정보는 conv가 많이 가지고있다. (새로운 이미지가들어온다고 해서 그 중요한 generalize된 faeture의 변화가 적은듯) 대신 fc가 domain에 맞게 많이 변해주는듯.
+  - pretraining과 fine tuning에 있어서 Fc와 conv의 차이
+    - 이 논문에 이걸 비교해놓은 부분이 있는데 흥미로움
+    - conv 부분만 finetuning했을땐 성능향상이 미흡함 반면 fc를 추가하여 finetuning했을땐 성능이 확실히 향상됨
+    - 일반화된 feature 정보는 conv가 많이 가지고있다. (새로운 이미지가들어온다고 해서 그 중요한 generalize된 faeture의 변화가 적은듯) 대신 fc가 domain에 맞게 많이 변해주는듯.
 
 4. 상세 분류과정
 - Bbox regression 몰랐는데. 정말
