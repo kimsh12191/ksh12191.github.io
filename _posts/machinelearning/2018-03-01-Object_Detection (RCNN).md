@@ -102,5 +102,7 @@ image:
   - region proposal resize하는 부분, 어떻게 변화하나 지켜보면서 논문을 보는것도 좋을듯.
   - 분류, bbox regression부분이 어떻게 이용되는지 보는것도 좋을것으로 보임
   - nms 부분도, 뭔가참신한게 나올까?
+
+
 ---
   [1] Girshick Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation.
