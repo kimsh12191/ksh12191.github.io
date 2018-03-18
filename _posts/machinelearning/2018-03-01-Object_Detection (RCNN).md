@@ -13,47 +13,75 @@ image:
   - [01. RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
   - [02. Fast RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(fastRCNN)/).
 
-# 1. Introduction
-  - object detection
-    - 모델의 입장에서 생각해보자. 모델이 영상을 본다.
-      - step1. 그 영상속에서 어떤 물체가 있는지 없는지 찾는다.
-      - step2. 만약 물체가 있다면 그 물체가 무엇을 나타내는지 분류한다.
+# 1. RCNN 모델의 간략한 구조
+  <center>
+     <img src="/images/RCNN/01_rcnn_structrue.png">
+  </center>
 
-# 2. Region Proposals
-  - step1 부터 시작해보자. 영상(혹은 그림) 속에서 우리가 바라는 물체를 찾아야 한다.
-    - 어떻게 찾게하지?
-    - 가장 쉬운 방법은 다양한 크기의 window를 만든 후 그것을 slide 하면된다.
-        1. window안에 물체가 있니? 있다/없다
-        2. 옆으로 한칸 이동
-        3. 다시 질문. 물체가 있니 없니?
+  <center>
+      Figure 1 [2] RCNN의 구조를 잘 보여주는 그림
+  </center>
 
-  - Region proposal algorithm
-    - sliding window는 무식함. 당연히 느림
-    - 좀더 빠르게 물체가 있을법 한곳을 찾아내는 다양한 알고리즘들을 말함. ex) selective search?
+- 전체 구조를 보고, 알아가는게 중요할 것 같다.
+  - RCNN 논문을 보면 첫장부터 이 그림이나온다. (그래서 이그림만 보고 논문을 다봤다 라고생각할 수도 있는것 같다. 하지만 object detection에서 딥러닝을 제대로 활용하는 시작논문에 가까워서, 한번 읽어보는 것도 좋은것 같다.)
+  - 구조상 1번 2번은 기존의 방법론이 이용된다.
+    - 그림에서 물체가 있을 것만 같은 지역을 찾아주는 알고리즘을 돌린다. (ex) selective search)
+    - 그리고 많은 숫자의 region proposal을 얻는다.
+  - 2번과 3번 사이의 길목에서 특이한 개념이 나온다. (혹은 당연하지만 응?이게 이래도되나 싶은)
+    - 이미지의 비율을 무시하고 사이즈를 똑같이 맞추는 warp를 시행한다.
+    - CNN 구조가 fully connected 를 위해서는 똑같은 사이즈의 input 을 요구한다.
+  - 다음으로 CNN에 이 warp된 region을 input으로 넣어 학습한다.
+    - 최근에는 이걸로바로 분류를 하지만 여기에서는 feature를 추출하는 개념으로 활용한다.
+    - 또한 그림에는 나오지않지만 non maximun suppression을 적용하여, 같은 사물을 나타내는 수많은 region proposals 중에서 제일 좋은걸 하나만 골라낸다.
+  - 분류는 SVM으로!!
+    - SVM을 무시하는 경향이 없지않아 있었는데, 다음 논문인 fast RCNN 보면 그냥 딥러닝처럼 하는거랑 SVM하는거랑 별차이가 없다는 것을 보여준다. 심지어 튜닝 잘하면 CNN feature 추출 + SVM 이 더 좋을 수도 있음
+      - 하지만 이런 pipeline 방법은 치명적인 함정이 있지.
+      - 일단은 "용량" 이슈
+      - 자세한건 fast RCNN 에서
 
-# 3. R-CNN
-  - R-CNN은  넘나 유명해서 사실 논문을 읽어보지는 않았다. (하지만 딥러닝 object detection의 시작!?!) 그림만 봐도 알거같은 기분같은 기분
-  - 간략하게 설명하면 R CNN은
-    1. region proposals algorithm으로 사물이 있을것 같은 영역을 찾고
-    2. CNN으로 그 영역의 중요한 feature 를 추출한 후
-    3. SVM으로 그 영역의 사물이 어떤 것을 나타내는지  classify한다. (와 뭔가 난잡한데? 빡세다.)
 
-<center>
-   <img src="/images/RCNN/01_rcnn_structrue.png">
-</center>
+# 2. RCNN, 그리고 Girshick의 논문에서 얻은 insight.
 
-<center>
-    Figure 1 [2] RCNN의 구조를 잘 보여주는 그림
-</center>
+- 알려진것에 더하여, RCNN논문을 보면서 얻은 insight 들이 있따.
+  - 이게 좋다, 혹은 아 이부분은 미래에 고쳐지겠구나. (우리는 대략적인 미래를 아니까)
+- 총 네가지가 있따.
 
- - 이 그림만 어느정도 이해했으면 RCNN에서 건질거 다건진듯
- - __좀더 상세 STEP설명__
-    - 어디감?
- - 이 친구는 잘됨/하지만 속도가 느리지. 가장 강력한 속도가 느린 이유는 이미지 1장당 region proposal개수 만큼 CNN 연산을 해줘야해서  inference 속도가 매우 느림.
+<br>
+
+1. Region proposal
+- 여기까지 딥러닝으로 하기에는 쉽게생각했을때는 떠오르지가 않음.
+- 기존의 방법론과 잘 결합한듯?
+
+2. Warped region
+- 개선의 여지가 있는 부분
+- appendix 까지 만들어서 설명을 해주는데 꼭, 비유를 망가뜨리면서까지 resize 해야하는건지..?
+  - resize 자체가 필요한건 알겠지만.
+
+3. Pretraining + fine turing
+- 지금은 당연하게 쓰는 방법이지만 확실히 중요함
+  - pretraining : 일반화된 feature들을 가져오는 것, 엄청 많은 수의 이미지를 학습시켜 놓으면 확실히 이미지에서 중요한 부분을 뽑는 일반화된 feature 를 만날 수 있을것
+    - 많은 수의 이미지를 학습한 결과 생기는 아주 general한 conv feature는 이미지의 중요한 정보를 아주 잘 지니고있다고 할수있음.
+  - fine tuning : domain에 맞게 feature를 추가 튜닝.
+- pretraining과 fine tuning에 있어서 Fc와 conv의 차이
+  - 이 논문에 이걸 비교해놓은 부분이 있는데 흥미로움
+  - conv 부분만 finetuning했을땐 성능향상이 미흡함 반면 fc를 추가하여 finetuning했을땐 성능이 확실히 향상됨
+  - 일반화된 feature 정보는 conv가 많이 가지고있다. (새로운 이미지가들어온다고 해서 그 중요한 generalize된 faeture의 변화가 적은듯) 대신 fc가 domain에 맞게 많이 변해주는듯.
+
+4. 상세 분류과정
+- Bbox regression 몰랐는데. 정말
+그림에도없음
+  - Bbox regression : 사실 이거 만해도 성능 엄청오름
+  - region proposal 에서 넘어온 box에서 시작해서, 변화시킬 차이만큼을 optimize 시킴
+  - 이 자세한 object function 은 생략한다. 앞으로 계속 나온다
+- Region proposal 모두에 대해서? 아니
+  - 사물이랑 너무 멀리있으면, optimize 잘 안됨
+  - 사물과 가장 가까운 박스
+가까운?
+    - Ground truth G 와 IoU가 가장 높은 박스만 이용해서 weight 찾으면 땡임
+
+- Non maximum suppression
+  - 같은 사물에 대해서 많은 roi 가 나올거.
+    - IoU 가 일정이상인애들 중에서 제일 높은 score 를 가진 친구만 살림
 
 ---
-- 감사합니다. 참고했어요
-
-  [1] https://blog.lunit.io/2017/06/01/r-cnns-tutorial/
-
-  [2] Girshick, Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation.
+  [1] Girshick Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation.

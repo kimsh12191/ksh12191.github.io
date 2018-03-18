@@ -13,6 +13,8 @@ image:
   - [01. RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(RCNN)/).
   - [02. Fast RCNN 정리](https://ksh12191.github.io/machinelearning/Object_Detection-(fastRCNN)/).
 
+- 당했따. 제대로 읽어보면 SPPnet이 한일이 더 중요하다고 느껴짐.
+
 # 1. 단점 극복
   - RCNN은 잘되지만 느리다.. (안습)
   - 진짜로 쓰러면 빨라져야지. 어떤 부분을 빠르게 할 수 있을까? 느리게 만드는 부분이 대체어디지?
