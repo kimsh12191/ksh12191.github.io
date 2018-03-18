@@ -92,5 +92,15 @@ image:
   - 같은 사물에 대해서 많은 roi 가 나올거.
     - IoU 가 일정이상인애들 중에서 제일 높은 score 를 가진 친구만 살림
 
+# 결론?
+
+- 이논문에서 흔히 아는 RCNN 구조만 얻을 줄 알았는데 생각보다 다른 많은 것을 얻을 수 있는듯?
+  - pretraining 이나
+  - bbox regression, 이게 여기서부터 나올줄이야
+  - nms(non maximun suppression) , 이것도, region proposal 중에서 좋은거 잘 골라내는 것도 아주중요한 이슈라고 할 수있음.
+- 또한, 나중에 많은 개선이 이루어질것으로 보이는 부분도 눈에 띄는거 같음.
+  - region proposal resize하는 부분, 어떻게 변화하나 지켜보면서 논문을 보는것도 좋을듯.
+  - 분류, bbox regression부분이 어떻게 이용되는지 보는것도 좋을것으로 보임
+  - nms 부분도, 뭔가참신한게 나올까?
 ---
   [1] Girshick Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation.
