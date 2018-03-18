@@ -42,10 +42,10 @@ image:
     - 이미 분류된 box들 중에서 제일 확률 높은 박스를 골라서 마지막으로 박스를 약간 수정하는 과정
 
 - 따라서 전체프로세스는 다음과 같다.
-  - 1. region proposal 추출
-  - 2. pretrain 된 cnn에 region proposal을 input으로 넣어 domain specific 해지게 fine tuning
-  - 3. fine tuning된 cnn을 이용하여 각각의 region proposal에 대한 feature를 취득한다. 그리고 이를 이용하여 SVM으로 클래스 분류
-  - 4. 마지막으로 bbox regression 시행, 마지막 튜닝
+  - 1.region proposal 추출
+  - 2.pretrain 된 cnn에 region proposal을 input으로 넣어 domain specific 해지게 fine tuning
+  - 3.fine tuning된 cnn을 이용하여 각각의 region proposal에 대한 feature를 취득한다. 그리고 이를 이용하여 SVM으로 클래스 분류
+  - 4.마지막으로 bbox regression 시행, 마지막 튜닝
 
 
 # 2. RCNN, 그리고 Girshick의 논문에서 얻은 insight.
@@ -103,6 +103,7 @@ image:
   - 분류, bbox regression부분이 어떻게 이용되는지 보는것도 좋을것으로 보임
   - nms 부분도, 뭔가참신한게 나올까?
 
+<br>
 
 ---
   [1] Girshick Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation.
