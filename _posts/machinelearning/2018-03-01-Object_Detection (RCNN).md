@@ -38,6 +38,14 @@ image:
       - 하지만 이런 pipeline 방법은 치명적인 함정이 있지.
       - 일단은 "용량" 이슈
       - 자세한건 fast RCNN 에서
+  - 그림은 마치여기서 끝같지만 bbox regression이 있음
+    - 이미 분류된 box들 중에서 제일 확률 높은 박스를 골라서 마지막으로 박스를 약간 수정하는 과정
+
+- 따라서 전체프로세스는 다음과 같다.
+  - 1. region proposal 추출
+  - 2. pretrain 된 cnn에 region proposal을 input으로 넣어 domain specific 해지게 fine tuning
+  - 3. fine tuning된 cnn을 이용하여 각각의 region proposal에 대한 feature를 취득한다. 그리고 이를 이용하여 SVM으로 클래스 분류
+  - 4. 마지막으로 bbox regression 시행, 마지막 튜닝
 
 
 # 2. RCNN, 그리고 Girshick의 논문에서 얻은 insight.
@@ -61,7 +69,8 @@ image:
 - 지금은 당연하게 쓰는 방법이지만 확실히 중요함
   - pretraining : 일반화된 feature들을 가져오는 것, 엄청 많은 수의 이미지를 학습시켜 놓으면 확실히 이미지에서 중요한 부분을 뽑는 일반화된 feature 를 만날 수 있을것
     - 많은 수의 이미지를 학습한 결과 생기는 아주 general한 conv feature는 이미지의 중요한 정보를 아주 잘 지니고있다고 할수있음.
-  - fine tuning : domain에 맞게 feature를 추가 튜닝.
+    - fine tuning : domain에 맞게 feature를 추가 튜닝.
+
 - pretraining과 fine tuning에 있어서 Fc와 conv의 차이
   - 이 논문에 이걸 비교해놓은 부분이 있는데 흥미로움
   - conv 부분만 finetuning했을땐 성능향상이 미흡함 반면 fc를 추가하여 finetuning했을땐 성능이 확실히 향상됨
