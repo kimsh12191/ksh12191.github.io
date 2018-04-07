@@ -178,6 +178,7 @@ nvidia-docker run -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3
 
 - container 만들기 (이거 중요함)
   - ```nvidia-docker run -it -d -p (OS포트):8888 --name (container_name) -v (/data:/data) (docker_image_id)```
+    - 나의경우 ```nvidia-docker run -it -d -p 8888:8888 --name tensorflow_v1 -v /home/suhyun/sh_docker:/notebooks/sh_docker 0f4b997bc3af``` 이런식으로 진행
   - 일단 ```container_name```은 이제부터 container를 실행할때마다 만날친구
   - ```(/data:/data)``` : 도커와 내컴퓨터가 통신할? 마운트된 폴더? 매개체? 왼쪽이 내컴퓨터 오른쪽이 도커로 기억함.
   - ```docker_image_id``` nvidia-docker images에 있는 container에 넣고싶은 image의 아이디를 넣어주면됨.
