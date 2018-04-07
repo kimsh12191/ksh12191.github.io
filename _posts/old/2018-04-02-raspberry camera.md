@@ -1,10 +1,10 @@
 ---
-layout: post
+layout:
 title: 라즈베리파이 로 영상처리하기
 modified:
-categories: raspi
+categories:
 excerpt:
-tags: [Raspi]
+tags: []
 image:
   feature:
 ---

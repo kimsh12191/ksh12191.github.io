@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: 
 title: Signal processing lecture Intro
 modified:
-categories: machinelearning
+categories:
 excerpt:
-tags: [Signal Processing]
+tags: [ ]
 image:
   feature:
 ---

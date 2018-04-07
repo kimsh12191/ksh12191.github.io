@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: 
 title: Object Detection - RCNN
 modified:
-categories: machinelearning
+categories:
 excerpt:
-tags: [Deep Learning, Object detection]
+tags: [ ]
 image:
   feature:
 ---
